@@ -7,6 +7,7 @@ namespace DesignPatternsProjekt
     {
         public Texture2D Sprite { get; set; }
         public Vector2 Origin { get; set; }
+        public float Scale { get; set; } = 1f;
 
         public float Rotation { get; set; }
 

@@ -10,7 +10,7 @@ namespace DesignPatternsProjekt
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private List<GameObject> gameObjects = new List<GameObject>();
+        public List<GameObject> gameObjects = new List<GameObject>();
         private List<GameObject> newGameObjects = new List<GameObject>();
         private List<GameObject> destroyedGameObjects = new List<GameObject>();
 
@@ -39,11 +39,18 @@ namespace DesignPatternsProjekt
 
         protected override void Initialize()
         {
-            GameObject player = new GameObject();
-            player.AddComponent(new Player());
-            player.AddComponent(new SpriteRenderer());
-            gameObjects.Add(player);
+            /*for (int i = 0; i < 100; i++) //-----------------------NEEDS REWORKING FOR FACTORY!
+            {
+                GameObject test = new GameObject();
+                test.AddComponent(new BackgroundStars());
+                test.AddComponent(new SpriteRenderer());
+                gameObjects.Add(test);
+            }*/
+            StarFactory.Instance.CreateObject(100);
 
+            Director director = new Director(new PlayerBuilder());
+            gameObjects.Add(director.Construct());
+    
 
             for (int i = 0; i < gameObjects.Count; i++)
             {
