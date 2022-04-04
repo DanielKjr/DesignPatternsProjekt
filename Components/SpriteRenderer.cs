@@ -7,6 +7,7 @@ namespace DesignPatternsProjekt
     {
         public Texture2D Sprite { get; set; }
         public Vector2 Origin { get; set; }
+        public float Scale { get; set; } = 1f;
 
         public override void Start()
         {
@@ -24,7 +25,7 @@ namespace DesignPatternsProjekt
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Sprite, GameObject.Transform.Position, null, Color.White, 0, Origin, 1, SpriteEffects.None, 1);
+            spriteBatch.Draw(Sprite, GameObject.Transform.Position, null, Color.White, 0, Origin, Scale, SpriteEffects.None, 1);
         }
     }
 }

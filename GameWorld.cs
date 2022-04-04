@@ -39,11 +39,21 @@ namespace DesignPatternsProjekt
 
         protected override void Initialize()
         {
+            for (int i = 0; i < 100; i++) //-----------------------NEEDS REWORKING FOR FACTORY!
+            {
+                GameObject test = new GameObject();
+                test.AddComponent(new BackgroundStars());
+                test.AddComponent(new SpriteRenderer());
+                gameObjects.Add(test);
+            }
+
             GameObject player = new GameObject();
             player.AddComponent(new Player());
             player.AddComponent(new SpriteRenderer());
             gameObjects.Add(player);
 
+            
+            
 
             for (int i = 0; i < gameObjects.Count; i++)
             {
