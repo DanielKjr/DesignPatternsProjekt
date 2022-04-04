@@ -47,13 +47,9 @@ namespace DesignPatternsProjekt
                 gameObjects.Add(test);
             }
 
-            GameObject player = new GameObject();
-            player.AddComponent(new Player());
-            player.AddComponent(new SpriteRenderer());
-            gameObjects.Add(player);
-
-            
-            
+            Director director = new Director(new PlayerBuilder());
+            gameObjects.Add(director.Construct());
+    
 
             for (int i = 0; i < gameObjects.Count; i++)
             {
