@@ -39,14 +39,8 @@ namespace DesignPatternsProjekt
 
         protected override void Initialize()
         {
-            /*for (int i = 0; i < 100; i++) //-----------------------NEEDS REWORKING FOR FACTORY!
-            {
-                GameObject test = new GameObject();
-                test.AddComponent(new BackgroundStars());
-                test.AddComponent(new SpriteRenderer());
-                gameObjects.Add(test);
-            }*/
-            StarFactory.Instance.CreateObject(100);
+            
+            CreateBackground();
 
             Director director = new Director(new PlayerBuilder());
             gameObjects.Add(director.Construct());
@@ -60,6 +54,7 @@ namespace DesignPatternsProjekt
             base.Initialize();
         }
 
+       
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -91,7 +86,7 @@ namespace DesignPatternsProjekt
         //draws all gameobjects
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
 
@@ -168,6 +163,14 @@ namespace DesignPatternsProjekt
             return null;
 
 
+        }
+
+        public void CreateBackground()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                gameObjects.Add(StarFactory.Instance.CreateObject());
+            }
         }
     }
 }

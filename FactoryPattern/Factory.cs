@@ -6,6 +6,6 @@ namespace DesignPatternsProjekt
 {
     public abstract class Factory
     {
-        public abstract void CreateObject(int amount);
+        public abstract GameObject CreateObject();
     }
 }

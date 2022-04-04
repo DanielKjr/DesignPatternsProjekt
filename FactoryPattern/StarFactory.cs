@@ -20,18 +20,20 @@ namespace DesignPatternsProjekt
             }
         } //Singleton end
 
-        public override void CreateObject(int amount)
+        public override GameObject CreateObject()
         {
-            for (int i = 0; i < amount; i++)
-            {
+            
                 GameObject item = new GameObject();
                 SpriteRenderer rend = (SpriteRenderer)item.AddComponent(new SpriteRenderer());
 
                 rend.SetSprite("Pixel");
                 item.AddComponent(new BackgroundStars(rnd.Next(20, 150)));
 
-                GameWorld.Instance.gameObjects.Add(item);
-            }
+                //GameWorld.Instance.gameObjects.Add(item);
+
+                return item;
+            
+           
         }
     }
 }
