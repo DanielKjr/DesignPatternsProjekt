@@ -44,6 +44,14 @@ namespace DesignPatternsProjekt
             player.AddComponent(new SpriteRenderer());
             gameObjects.Add(player);
 
+            for (int i = 0; i < 100; i++)
+            {
+                GameObject test = new GameObject();
+                test.AddComponent(new BackgroundStars());
+                test.AddComponent(new SpriteRenderer());
+                gameObjects.Add(test);
+            }
+            
 
             for (int i = 0; i < gameObjects.Count; i++)
             {
