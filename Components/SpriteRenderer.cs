@@ -9,6 +9,8 @@ namespace DesignPatternsProjekt
         public Vector2 Origin { get; set; }
         public float Scale { get; set; } = 1f;
 
+        public float Rotation { get; set; }
+
         public override void Start()
         {
             Origin = new Vector2(Sprite.Width / 2, Sprite.Height / 2);
@@ -25,7 +27,7 @@ namespace DesignPatternsProjekt
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Sprite, GameObject.Transform.Position, null, Color.White, 0, Origin, Scale, SpriteEffects.None, 1);
+            spriteBatch.Draw(Sprite, GameObject.Transform.Position, null, Color.White, Rotation, Origin, 1, SpriteEffects.None, 1);
         }
     }
 }
