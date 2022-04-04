@@ -12,12 +12,15 @@ namespace DesignPatternsProjekt
         private Vector2 velocity = new Vector2(0, 1);
         private float speed = 1f;
         private SpriteRenderer rend;
-            
+        
+        public BackgroundStars(float _speed)
+        {
+            speed = _speed;
+        }
         public override void Start()
         {
             rend = GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
-            rend.SetSprite("Pixel");
-            Reset(); //Prep for first launch. Reset Y value on lext line for normal startup looks.
+            Reset();
             GameObject.Transform.Position = new Vector2(rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferWidth), rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferHeight));
         }
         private void Move()
