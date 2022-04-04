@@ -27,7 +27,7 @@ namespace DesignPatternsProjekt
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Sprite, GameObject.Transform.Position, null, Color.White, Rotation, Origin, 1, SpriteEffects.None, 1);
+            spriteBatch.Draw(Sprite, GameObject.Transform.Position, null, Color.White, Rotation, Origin, Scale, SpriteEffects.None, 1);
         }
     }
 }
