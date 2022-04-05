@@ -25,8 +25,8 @@ namespace DesignPatternsProjekt
             GameObject item = new GameObject();
             SpriteRenderer rend = (SpriteRenderer)item.AddComponent(new SpriteRenderer());
 
-            rend.SetSprite("MinerTest");
-            item.AddComponent(new Enemy(2, new Vector2(0,0)));
+            rend.SetSprite("EvilGirth");
+            item.AddComponent(new Enemy(5, new Vector2(0,1)));
             return item;
         }
     }
