@@ -39,7 +39,9 @@ namespace DesignPatternsProjekt
 
         protected override void Initialize()
         {
-            
+            Graphics.PreferredBackBufferHeight = 800;
+            Graphics.PreferredBackBufferWidth = 1280;
+            Graphics.ApplyChanges();
             CreateBackground();
 
             Director director = new Director(new PlayerBuilder());
