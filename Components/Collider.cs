@@ -60,6 +60,7 @@ namespace DesignPatternsProjekt
                 {
                     if (other.GameObject.Tag == "Enemy")
                     {
+                        
                         GameWorld.Instance.Destroy(other.GameObject);
                     }
                    

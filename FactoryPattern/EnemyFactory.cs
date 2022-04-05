@@ -28,21 +28,21 @@ namespace DesignPatternsProjekt
             SpriteRenderer rend = (SpriteRenderer)item.AddComponent(new SpriteRenderer());
 
             Collider c = (Collider)item.AddComponent(new Collider());
- 
-             item.Tag = "Enemy";
+
+            item.Tag = "Enemy";
             GameWorld.Instance.Colliders.Add(c);
 
-            item.AddComponent(new Enemy(2, new Vector2(0, 0)));
+            // item.AddComponent(new Enemy(2, new Vector2(0, 0)));
 
 
             rend.SetSprite("EvilGirth");
             Vector2 moveDir = new Vector2(0, 0);
             Vector2 spawnPoint = new Vector2(0, 0);
-            switch (rnd.Next(0,4))
+            switch (rnd.Next(0, 4))
             {
                 case 0:
                     moveDir = new Vector2(0, 1);
-                    spawnPoint = new Vector2(rnd.Next(0,GameWorld.Instance.Graphics.PreferredBackBufferWidth),0);
+                    spawnPoint = new Vector2(rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferWidth), 0);
                     break;
                 case 1:
                     moveDir = new Vector2(0, -1);
@@ -54,7 +54,7 @@ namespace DesignPatternsProjekt
                     break;
                 case 3:
                     moveDir = new Vector2(1, 0);
-                    spawnPoint = new Vector2(0,rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferHeight));
+                    spawnPoint = new Vector2(0, rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferHeight));
                     break;
             }
             item.AddComponent(new Enemy(20, moveDir, spawnPoint));
