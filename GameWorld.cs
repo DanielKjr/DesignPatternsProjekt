@@ -142,11 +142,11 @@ namespace DesignPatternsProjekt
                 newGameObjects[i].Start();
 
                 //det sættes i factory eller player builder
-                //Collider c = (Collider)newGameObjects[i].GetComponent<Collider>();
-                //if (c != null)
-                //{
-                //    Colliders.Add(c);
-                //}
+                Collider c = (Collider)newGameObjects[i].GetComponent<Collider>();
+                if (c != null)
+                {
+                    Colliders.Add(c);
+                }
 
             }
 

@@ -13,13 +13,28 @@ namespace DesignPatternsProjekt
         {
             get
             {
-                return new Rectangle(
-                    (int)(GameObject.Transform.Position.X - spriteRenderer.Sprite.Width /2),
-                    (int)(GameObject.Transform.Position.Y - spriteRenderer.Sprite.Height /2),
-                    spriteRenderer.Sprite.Width,
-                    spriteRenderer.Sprite.Height
+
+                if (GameObject.Tag == "Player")
+                {
+                    return new Rectangle(
+                         (int)(GameObject.Transform.Position.X - 45),
+                    (int)(GameObject.Transform.Position.Y - 55),
+                    spriteRenderer.Sprite.Width / 4,
+                    spriteRenderer.Sprite.Height / 3
                     );
+                }
+                else
+                {
+                    return new Rectangle(
+                  (int)(GameObject.Transform.Position.X - spriteRenderer.Sprite.Width / 2),
+                  (int)(GameObject.Transform.Position.Y - spriteRenderer.Sprite.Height / 2),
+                  spriteRenderer.Sprite.Width,
+                  spriteRenderer.Sprite.Height
+                  );
+                }
+
             }
+
         }
 
         public override void Start()
@@ -60,13 +75,13 @@ namespace DesignPatternsProjekt
                 {
                     if (other.GameObject.Tag == "Enemy")
                     {
-                        
+
                         GameWorld.Instance.Destroy(other.GameObject);
                     }
-                   
+
                 }
-              
-                
+
+
             }
         }
 

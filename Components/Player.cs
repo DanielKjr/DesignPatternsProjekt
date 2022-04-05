@@ -9,6 +9,8 @@ namespace DesignPatternsProjekt
 
         private Animator animator;
 
+
+
         public void Move(Vector2 _velocity)
         {
             if (_velocity != Vector2.Zero)
@@ -31,8 +33,10 @@ namespace DesignPatternsProjekt
         {
             SpriteRenderer sr = GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
             // sr.SetSprite("Insert sprite path here");
-            sr.SetSprite("MinerTest");
-            GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth / 2, GameWorld.Instance.Graphics.PreferredBackBufferHeight  / 2);
+            sr.SetSprite("PlayerAnimation/Ship1");
+            sr.Scale = 0.3f;
+            sr.Rotation = 4.7f;
+            GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth / 2, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 2);
             animator = (Animator)GameObject.GetComponent<Animator>();
         }
 
@@ -51,6 +55,8 @@ namespace DesignPatternsProjekt
                     shootTime = 0;
                 }
             }
+            animator.PlayAnimation("Normal");
+
         }
 
         public void Shoot()

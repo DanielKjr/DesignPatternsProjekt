@@ -28,7 +28,7 @@ namespace DesignPatternsProjekt
             go.AddComponent(new Laser(0, -1));
             sr.SetSprite("laserRed04");
             Collider c = (Collider)go.AddComponent(new Collider());
-            GameWorld.Instance.Colliders.Add(c);
+           
 
             return go;
         }
