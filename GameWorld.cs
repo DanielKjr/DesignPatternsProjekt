@@ -13,6 +13,7 @@ namespace DesignPatternsProjekt
         public List<GameObject> gameObjects = new List<GameObject>();
         private List<GameObject> newGameObjects = new List<GameObject>();
         private List<GameObject> destroyedGameObjects = new List<GameObject>();
+        public List<Collider> Colliders { get; private set; } = new List<Collider>();
 
         public GraphicsDeviceManager Graphics { get => _graphics; }
 
@@ -128,17 +129,31 @@ namespace DesignPatternsProjekt
         /// </summary>
         public void CleanUp()
         {
+           
             for (int i = 0; i < newGameObjects.Count; i++)
             {
                 gameObjects.Add(newGameObjects[i]);
                 newGameObjects[i].Awake();
                 newGameObjects[i].Start();
 
+                //det sættes i factory eller player builder
+                //Collider c = (Collider)newGameObjects[i].GetComponent<Collider>();
+                //if (c != null)
+                //{
+                //    Colliders.Add(c);
+                //}
+
             }
 
             for (int i = 0; i < destroyedGameObjects.Count; i++)
             {
+                Collider c = (Collider)((GameObject)destroyedGameObjects[i]).GetComponent<Collider>();
                 gameObjects.Remove(destroyedGameObjects[i]);
+
+                if (c != null)
+                {
+                    Colliders.Remove(c);
+                }
             }
 
             destroyedGameObjects.Clear();

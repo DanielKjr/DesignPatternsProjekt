@@ -24,9 +24,12 @@ namespace DesignPatternsProjekt
         {
             GameObject item = new GameObject();
             SpriteRenderer rend = (SpriteRenderer)item.AddComponent(new SpriteRenderer());
-
+            Collider c = (Collider)item.AddComponent(new Collider());
+ 
+             item.Tag = "Enemy";
+            GameWorld.Instance.Colliders.Add(c);
             rend.SetSprite("MinerTest");
-            item.AddComponent(new Enemy(2, new Vector2(0,0)));
+            item.AddComponent(new Enemy(2, new Vector2(0, 0)));
             return item;
         }
     }
