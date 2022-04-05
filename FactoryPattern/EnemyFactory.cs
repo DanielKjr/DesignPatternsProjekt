@@ -49,7 +49,7 @@ namespace DesignPatternsProjekt
                     spawnPoint = new Vector2(0,rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferHeight));
                     break;
             }
-            item.AddComponent(new Enemy(2, moveDir, spawnPoint));
+            item.AddComponent(new Enemy(20, moveDir, spawnPoint));
 
             return item;
 
