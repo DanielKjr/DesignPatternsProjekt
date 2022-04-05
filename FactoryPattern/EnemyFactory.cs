@@ -1,39 +1,33 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DesignPatternsProjekt
 {
-    public class StarFactory : Factory
+    class EnemyFactory : Factory
     {
-        private static StarFactory instance;
+        private static EnemyFactory instance;
         private Random rnd = new Random();
-        public static StarFactory Instance //Singlton start
+        public static EnemyFactory Instance //Singlton start
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new StarFactory();
+                    instance = new EnemyFactory();
                 }
                 return instance;
             }
-        } //Singleton end
-
+        }//singleton end
         public override GameObject CreateObject()
         {
-
             GameObject item = new GameObject();
             SpriteRenderer rend = (SpriteRenderer)item.AddComponent(new SpriteRenderer());
 
-            rend.SetSprite("Pixel");
-            item.AddComponent(new BackgroundStars(rnd.Next(20, 150)));
-
-            //GameWorld.Instance.gameObjects.Add(item);
-
+            rend.SetSprite("MinerTest");
+            item.AddComponent(new Enemy(2, new Vector2(0,0)));
             return item;
-
-
         }
     }
 }
