@@ -27,6 +27,14 @@ namespace DesignPatternsProjekt
             GameObject item = new GameObject();
             SpriteRenderer rend = (SpriteRenderer)item.AddComponent(new SpriteRenderer());
 
+            Collider c = (Collider)item.AddComponent(new Collider());
+ 
+             item.Tag = "Enemy";
+            GameWorld.Instance.Colliders.Add(c);
+
+            item.AddComponent(new Enemy(2, new Vector2(0, 0)));
+
+
             rend.SetSprite("EvilGirth");
             Vector2 moveDir = new Vector2(0, 0);
             Vector2 spawnPoint = new Vector2(0, 0);
@@ -50,6 +58,7 @@ namespace DesignPatternsProjekt
                     break;
             }
             item.AddComponent(new Enemy(20, moveDir, spawnPoint));
+
 
             return item;
 

@@ -27,6 +27,9 @@ namespace DesignPatternsProjekt
             Player p = (Player)gameObject.AddComponent(new Player());
 
             gameObject.AddComponent(new SpriteRenderer());
+            Collider c = (Collider)gameObject.AddComponent(new Collider());
+            GameWorld.Instance.Colliders.Add(c);
+            
 
             //når vi har animation skal componented tilføjes
             //gameObject.AddComponent(new Animator());
