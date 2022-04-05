@@ -7,16 +7,18 @@ namespace DesignPatternsProjekt
     {
         private float speed;
         private Vector2 velocity = new Vector2(0, 1);
+        private Vector2 spawnPoint = new Vector2(0, 0);
         private Random rnd = new Random();
 
-        public Enemy(float _speed, Vector2 _velocity)
+        public Enemy(float _speed, Vector2 _velocity, Vector2 _spawnPoint)
         {
             speed = _speed;
             velocity = new Vector2(_velocity.X, _velocity.Y);
+            spawnPoint = _spawnPoint;
         }
         public override void Start()
         {
-            GameObject.Transform.Position = new Vector2(rnd.Next(0, GameWorld.Instance.GraphicsDevice.Viewport.Width), 0);
+            GameObject.Transform.Position = spawnPoint;
         }
         public void Move()
         {
