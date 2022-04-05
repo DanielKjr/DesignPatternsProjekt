@@ -3,7 +3,7 @@ using System;
 
 namespace DesignPatternsProjekt
 {
-    public class MoveCommand : ICommand
+    public partial class MoveCommand : ICommand
     {
         private Vector2 velocity;
 

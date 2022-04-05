@@ -36,9 +36,32 @@ namespace DesignPatternsProjekt
             animator = (Animator)GameObject.GetComponent<Animator>();
         }
 
+        private float shootTime = 0;
         public override void Update(GameTime gameTime)
         {
             InputHandler.Instance.Execute(this);
+
+            if (!canShoot)
+            {
+                shootTime += GameWorld.DeltaTime;
+
+                if (shootTime > 1)
+                {
+                    canShoot = true;
+                    shootTime = 0;
+                }
+            }
+        }
+
+        public void Shoot()
+        {
+            if (canShoot)
+            {
+                GameObject go = LaserFactory.Instance.CreateObject();
+                go.Transform.Position = GameObject.Transform.Position;
+                GameWorld.Instance.Instantiate(go);
+            }
+            canShoot = false;
         }
     }
 }
