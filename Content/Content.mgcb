@@ -13,6 +13,8 @@
 
 #---------------------------------- Content ---------------------------------#
 
+
+#begin EvilGirth.png
 #begin laserRed04.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -23,7 +25,11 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
+
+/build:EvilGirth.png
+
 /build:laserRed04.png
+
 
 #begin MinerTest.png
 /importer:TextureImporter

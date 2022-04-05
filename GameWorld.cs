@@ -44,7 +44,12 @@ namespace DesignPatternsProjekt
             Graphics.PreferredBackBufferWidth = 1280;
             Graphics.ApplyChanges();
             CreateBackground();
-            gameObjects.Add(EnemyFactory.Instance.CreateObject());
+
+            for (int i = 0; i < 50; i++)
+            {
+                gameObjects.Add(EnemyFactory.Instance.CreateObject());
+            }
+            
 
             Director director = new Director(new PlayerBuilder());
             gameObjects.Add(director.Construct());
