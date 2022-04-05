@@ -41,6 +41,7 @@ namespace DesignPatternsProjekt
         {
             
             CreateBackground();
+            gameObjects.Add(EnemyFactory.Instance.CreateObject());
 
             Director director = new Director(new PlayerBuilder());
             gameObjects.Add(director.Construct());
