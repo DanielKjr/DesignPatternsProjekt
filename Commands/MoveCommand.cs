@@ -23,7 +23,7 @@ namespace DesignPatternsProjekt
         {
             player.Move(velocity);
             SpriteRenderer sr = player.GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
-            sr.Rotation += rotation;
+            sr.Rotation = rotation;
           
           
 
