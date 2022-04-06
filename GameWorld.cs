@@ -87,7 +87,7 @@ namespace DesignPatternsProjekt
             {
                 gameObjects[i].Update(gameTime);
             }
-
+            Spawner.Instance.Update(gameTime);
             base.Update(gameTime);
             //adds and removes new objects
             CleanUp();

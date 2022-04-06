@@ -23,6 +23,15 @@ namespace DesignPatternsProjekt
                     spriteRenderer.Sprite.Height / 3
                     );
                 }
+                else if (GameObject.Tag == "ColorChange")
+                {
+                    return new Rectangle(
+                  (int)(GameObject.Transform.Position.X - spriteRenderer.Sprite.Width + 72),
+                  (int)(GameObject.Transform.Position.Y - spriteRenderer.Sprite.Height + 72),
+                  spriteRenderer.Sprite.Width / 2,
+                  spriteRenderer.Sprite.Height / 2
+                  );
+                }
                 else
                 {
                     return new Rectangle(
