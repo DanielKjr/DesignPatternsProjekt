@@ -41,10 +41,10 @@ namespace DesignPatternsProjekt
                     item.Tag = "EnemyLaser";
 
                     Laser l = item.GetComponent<Laser>() as Laser;
-                    l.Velocity = new Vector2((float)Math.Cos(i),(float)Math.Sin(i));
+                    l.Velocity = new Vector2((float)Math.Cos(((Math.PI / 180) * (i+90))),(float)Math.Sin(((Math.PI / 180) * (i+90))));
                     GameWorld.Instance.Instantiate(item);
                     SpriteRenderer sr = item.GetComponent<SpriteRenderer>() as SpriteRenderer;
-                    sr.Rotation = (float)Math.Cos(i)-(float)Math.Sin(i); //----------------------------------------------FIGURE THIS SHIT OUT LATER.
+                    sr.Rotation = (float)((Math.PI / 180) * i); //----------------------------------------------FIGURE THIS SHIT OUT LATER.
                 }
                 shootTimer = 60;
                 //rend.Rotation = (float)((3.14 / 180) * 90);
