@@ -49,6 +49,7 @@ namespace DesignPatternsProjekt
             {
                 gameObjects.Add(EnemyFactory.Instance.CreateObject());
             }
+            gameObjects.Add(EnemyFactory.Instance.BossCreater());
             
 
             Director director = new Director(new PlayerBuilder());
