@@ -57,7 +57,7 @@ namespace DesignPatternsProjekt
                     break;
             }
             aste.AddComponent(new Asteroid(80, moveDir, spawnPoint));
-            sr.Rotation = rnd.Next(0, 100);
+
 
             return aste;
         }
