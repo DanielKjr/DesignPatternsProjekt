@@ -74,6 +74,7 @@ namespace DesignPatternsProjekt
 
             rend.SetSprite("EvilGirth");
             rend.Scale = 2f;
+            
 
             item.AddComponent(new Boss(10f, 1000, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 4));
 
