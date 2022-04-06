@@ -101,7 +101,14 @@ namespace DesignPatternsProjekt
         public void Notify(CollisionEvent collisionEvent)
         {
             GameObject other = (collisionEvent as CollisionEvent).Other;
+            SpriteRenderer otherRender = (SpriteRenderer)other.GetComponent<SpriteRenderer>() as SpriteRenderer;
+            SpriteRenderer sr = (SpriteRenderer)GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
+            if (other.Tag == "ColorChange")
+            {
+                sr.Color = otherRender.Color;
 
+                GameWorld.Instance.Destroy(other);
+            }
             if (other.Tag == "Enemy")
             {
               //  GameWorld.Instance.Destroy(other);

@@ -7,7 +7,7 @@ namespace DesignPatternsProjekt
 {
     public class Spawner
     {
-
+        private GameObject gameObject;
         private static Spawner instance;
         public static Spawner Instance
         {
@@ -40,14 +40,18 @@ namespace DesignPatternsProjekt
 
         public void SpawnColorChange()
         {
+            
             GameObject go = new GameObject();
             SpriteRenderer sr = (SpriteRenderer)go.AddComponent(new SpriteRenderer());
             Collider c = (Collider)go.AddComponent(new Collider());
-            ColorChange cc = (ColorChange)go.GetComponent<ColorChange>();
+         //   ColorChange cc = (ColorChange)go.AddComponent(new ColorChange());
+            
             sr.SetSprite("ball");
             go.Tag = "ColorChange";
             sr.Color = colors[rnd.Next(colors.Length)];
-            go.AddComponent(new ColorChange(new Vector2(rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferWidth), rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferHeight))));
+          ColorChange cc =  (ColorChange)go.AddComponent(new ColorChange(new Vector2(rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferWidth), rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferHeight))));
+
+            c.CollisionEvent.Attach(cc);
 
             GameWorld.Instance.Instantiate(go);
 
