@@ -9,6 +9,9 @@ namespace DesignPatternsProjekt
         private Vector2 velocity = new Vector2(0, 1);
         private Vector2 spawnPoint = new Vector2(0, 0);
         private Random rnd = new Random();
+        private bool canShoot = true;
+        private float shootTime = 0;
+
 
         public Enemy(float _speed, Vector2 _velocity, Vector2 _spawnPoint)
         {
@@ -24,9 +27,41 @@ namespace DesignPatternsProjekt
         {
             GameObject.Transform.Translate(velocity * GameWorld.DeltaTime * speed);
         }
+
+        public void Shoot()
+        {
+            if (canShoot)
+            {
+                GameObject go = LaserFactory.Instance.CreateObject();
+                go.Transform.Position = GameObject.Transform.Position;
+                go.Tag = "EnemyLaser";
+
+                Laser l = go.GetComponent<Laser>() as Laser;
+                l.Velocity = this.velocity;
+
+                //for at ændre rotationen på laseren til at passe med retningen 
+                //SpriteRenderer sr = go.GetComponent<SpriteRenderer>() as SpriteRenderer;
+                //noget i den stil, men det er forkert 
+                // sr.Rotation = (go.Transform.Position.Y + velocity.Y);
+
+
+
+                GameWorld.Instance.Instantiate(go);
+            }
+            canShoot = false;
+        }
+
         public override void Update(GameTime gameTime)
         {
             Move();
+            Shoot();
+            shootTime += GameWorld.DeltaTime;
+
+            if (shootTime > 1)
+            {
+                canShoot = true;
+                shootTime = 0;
+            }
         }
     }
 }

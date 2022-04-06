@@ -8,6 +8,8 @@ namespace DesignPatternsProjekt
         private float speed;
         private Vector2 velocity;
 
+        public Vector2 Velocity { get => velocity; set => velocity = value; }
+
         public Laser(int x, int y)
         {
             speed = 500;
