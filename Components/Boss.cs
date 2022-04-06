@@ -13,7 +13,8 @@ namespace DesignPatternsProjekt
         private bool blockNewDir;
         private int desiredYPos;
         private int shotgunTimer = 0;
-        private List<Laser> la = new List<Laser>();
+        private int megaAttackTimer = 120;
+        private int megaAttackStep = 0;
         private Random rnd = new Random();
         public int Health { get; set; }
         public Boss(float _speed, int _health, int _desiredYPos)
@@ -68,6 +69,9 @@ namespace DesignPatternsProjekt
                 Shotgun(AngleToPlayer());
             }
             shotgunTimer--;
+
+            if(megaAttackTimer <= 0) MegaAttack();
+            megaAttackTimer--;
         }
         public override void Update(GameTime gameTime)
         {
@@ -88,6 +92,19 @@ namespace DesignPatternsProjekt
                 RadialAttack(i);
             }
             shotgunTimer = 180;
+        }
+        private void MegaAttack()
+        {
+            RadialAttack(90 + megaAttackStep);
+            RadialAttack(270 - megaAttackStep);
+            megaAttackStep += 10;
+            megaAttackTimer = 15;
+            if (megaAttackStep >= 90)
+            {
+                megaAttackStep = 0;
+                megaAttackTimer = 1200;
+            }
+            shotgunTimer = 120;
         }
         private void RadialAttack(int angle)
         {
