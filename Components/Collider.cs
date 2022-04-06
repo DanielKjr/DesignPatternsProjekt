@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 namespace DesignPatternsProjekt
 {
-    public class Collider : Component
+    public partial class Collider : Component
     {
         private SpriteRenderer spriteRenderer;
         private Texture2D texture;
+        public CollisionEvent CollisionEvent { get; set; } = new CollisionEvent();
 
         public Rectangle CollisionBox
         {
@@ -73,10 +74,16 @@ namespace DesignPatternsProjekt
             {
                 if (other != this && other.CollisionBox.Intersects(CollisionBox))
                 {
+
+                    CollisionEvent.OnCollision(other.GameObject);
                     if (other.GameObject.Tag == "Enemy" && this.GameObject.Tag != "EnemyLaser" && this.GameObject.Tag != "Enemy")
                     {
+                       
 
-                        GameWorld.Instance.Destroy(other.GameObject);
+                        // GameWorld.Instance.Destroy(other.GameObject);
+
+
+
                     }
 
                 }
@@ -84,6 +91,5 @@ namespace DesignPatternsProjekt
 
             }
         }
-
     }
 }

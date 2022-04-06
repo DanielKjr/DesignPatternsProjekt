@@ -3,7 +3,7 @@ using System;
 
 namespace DesignPatternsProjekt
 {
-    public class Enemy : Component
+    public class Enemy : Component, IListner
     {
         private float speed;
         private Vector2 velocity = new Vector2(0, 1);
@@ -65,6 +65,16 @@ namespace DesignPatternsProjekt
             {
                 canShoot = true;
                 shootTime = 0;
+            }
+        }
+
+        public void Notify(CollisionEvent collisionEvent)
+        {
+            GameObject other = (collisionEvent as CollisionEvent).Other;
+            SpriteRenderer sr = other.GetComponent<SpriteRenderer>() as SpriteRenderer;
+            if (other.Tag == "Player")
+            {
+              //  sr.Color = Color.Black;
             }
         }
     }

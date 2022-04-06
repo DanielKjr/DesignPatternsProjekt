@@ -39,7 +39,7 @@ namespace DesignPatternsProjekt
 
             //collider når det engang er med
             //Collider c = (Collider)gameObject.AddComponent(new Collider());
-            //c.CollisionEvent.Attach(p);
+            c.CollisionEvent.Attach(p);
 
         }
 
