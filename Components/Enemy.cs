@@ -40,9 +40,13 @@ namespace DesignPatternsProjekt
                 l.Velocity = this.velocity;
 
                 //for at ændre rotationen på laseren til at passe med retningen 
-                //SpriteRenderer sr = go.GetComponent<SpriteRenderer>() as SpriteRenderer;
-                //noget i den stil, men det er forkert 
-                // sr.Rotation = (go.Transform.Position.Y + velocity.Y);
+                SpriteRenderer sr = go.GetComponent<SpriteRenderer>() as SpriteRenderer;
+
+                if (l.Velocity.X == 1 || l.Velocity.X == -1)
+                {
+                    sr.Rotation = 1.58f;
+                }
+                 
 
 
 
