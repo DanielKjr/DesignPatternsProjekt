@@ -6,7 +6,7 @@ namespace DesignPatternsProjekt
     {
         private float speed;
         private bool canShoot = true;
-
+        private Vector2 velocity;
         private Animator animator;
 
 
@@ -19,7 +19,7 @@ namespace DesignPatternsProjekt
             }
 
             _velocity *= speed;
-
+            velocity = _velocity;
             GameObject.Transform.Translate(_velocity * GameWorld.DeltaTime);
         }
 
@@ -58,13 +58,41 @@ namespace DesignPatternsProjekt
             animator.PlayAnimation("Normal");
 
         }
-
+        private Vector2 temptVelocity = new Vector2(0,-1);
         public void Shoot()
         {
             if (canShoot)
             {
                 GameObject go = LaserFactory.Instance.CreateObject();
                 go.Transform.Position = GameObject.Transform.Position;
+
+                SpriteRenderer sr = go.GetComponent<SpriteRenderer>() as SpriteRenderer;
+
+                Laser l = go.GetComponent<Laser>() as Laser;
+
+                
+                //if (velocity == Vector2.Zero)
+                //{
+                //    l.Velocity = new Vector2(0, -1);
+
+                //}
+
+                if (velocity != Vector2.Zero)
+                {
+                    l.Velocity = velocity;
+                    temptVelocity = velocity;
+                }
+                else
+                {
+                    l.Velocity = temptVelocity;
+                }
+               
+
+                if (l.Velocity.Y != -1 && l.Velocity.Y != 1)
+                {
+                    sr.Rotation = 1.58f;
+                }
+
                 GameWorld.Instance.Instantiate(go);
             }
             canShoot = false;

@@ -76,7 +76,7 @@ namespace DesignPatternsProjekt
             rend.Scale = 2f;
             
 
-            item.AddComponent(new Boss(10f, 1000, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 4));
+            item.AddComponent(new Boss(50f, 1000, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 4));
 
             return item;
         }
