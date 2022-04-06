@@ -2,8 +2,8 @@
 
 namespace DesignPatternsProjekt
 {
-    public class Player : Component
-    {
+    public class Player : Component, IListner
+    { 
         private float speed;
         private bool canShoot = true;
         private Vector2 velocity;
@@ -96,6 +96,16 @@ namespace DesignPatternsProjekt
                 GameWorld.Instance.Instantiate(go);
             }
             canShoot = false;
+        }
+
+        public void Notify(CollisionEvent collisionEvent)
+        {
+            GameObject other = (collisionEvent as CollisionEvent).Other;
+
+            if (other.Tag == "Enemy")
+            {
+              //  GameWorld.Instance.Destroy(other);
+            }
         }
     }
 }

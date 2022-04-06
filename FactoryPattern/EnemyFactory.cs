@@ -9,6 +9,7 @@ namespace DesignPatternsProjekt
     {
         private static EnemyFactory instance;
         private Random rnd = new Random();
+        private GameObject gameObject;
         public static EnemyFactory Instance //Singlton start
         {
             get
@@ -24,12 +25,12 @@ namespace DesignPatternsProjekt
         public override GameObject CreateObject()
         {
 
-            GameObject item = new GameObject();
-            SpriteRenderer rend = (SpriteRenderer)item.AddComponent(new SpriteRenderer());
+            gameObject = new GameObject();
+            SpriteRenderer rend = (SpriteRenderer)gameObject.AddComponent(new SpriteRenderer());
 
-            Collider c = (Collider)item.AddComponent(new Collider());
-
-            item.Tag = "Enemy";
+            Collider c = (Collider)gameObject.AddComponent(new Collider());
+            
+            gameObject.Tag = "Enemy";
             GameWorld.Instance.Colliders.Add(c);
 
             // item.AddComponent(new Enemy(2, new Vector2(0, 0)));
@@ -57,10 +58,12 @@ namespace DesignPatternsProjekt
                     spawnPoint = new Vector2(0, rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferHeight));
                     break;
             }
-            item.AddComponent(new Enemy(20, moveDir, spawnPoint));
 
+           
+          Enemy e = (Enemy)gameObject.AddComponent(new Enemy(20, moveDir, spawnPoint));
 
-            return item;
+            c.CollisionEvent.Attach(e);
+            return gameObject;
 
 
         }
