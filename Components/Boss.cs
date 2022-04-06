@@ -21,7 +21,7 @@ namespace DesignPatternsProjekt
         }
         public override void Start()
         {
-            GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth/2,0);
+            GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth / 2, 0);
         }
         private void Move()
         {
@@ -34,17 +34,20 @@ namespace DesignPatternsProjekt
         {
             if (shootTimer <= 0)
             {
-                for (int i = 0; i < 360; i+=10) //Circle laser attack
+                Player player = (Player)GameWorld.Instance.FindObjectOfType<Player>();
+                float angleToPlayer = (float)Math.Atan2(GameObject.Transform.Position.X - player.GameObject.Transform.Position.X, player.GameObject.Transform.Position.Y - GameObject.Transform.Position.Y);
+                angleToPlayer = (angleToPlayer * (180 / (float)Math.PI)) + 180;
+                for (float i = angleToPlayer-30; i < angleToPlayer + 40; i += 10) //Circle laser attack
                 {
                     GameObject item = LaserFactory.Instance.CreateObject();
                     item.Transform.Position = GameObject.Transform.Position;
                     item.Tag = "EnemyLaser";
 
                     Laser l = item.GetComponent<Laser>() as Laser;
-                    l.Velocity = new Vector2((float)Math.Cos(((Math.PI / 180) * (i+90))),(float)Math.Sin(((Math.PI / 180) * (i+90))));
+                    l.Velocity = new Vector2((float)Math.Cos(((Math.PI / 180) * (i-90))), (float)Math.Sin(((Math.PI / 180) * (i-90))));
                     GameWorld.Instance.Instantiate(item);
                     SpriteRenderer sr = item.GetComponent<SpriteRenderer>() as SpriteRenderer;
-                    sr.Rotation = (float)((Math.PI / 180) * i); //----------------------------------------------FIGURE THIS SHIT OUT LATER.
+                    sr.Rotation = (float)((Math.PI / 180) * (i + 180));
                 }
                 shootTimer = 60;
                 //rend.Rotation = (float)((3.14 / 180) * 90);
