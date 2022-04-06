@@ -8,7 +8,7 @@ namespace DesignPatternsProjekt
     public class InputHandler
     {
         private static InputHandler instance;
-
+        public KeyboardState keyState;
         public static InputHandler Instance
         {
             get
@@ -21,7 +21,7 @@ namespace DesignPatternsProjekt
             }
         }
 
-        private Dictionary<KeyInfo, ICommand> keybinds = new Dictionary<KeyInfo, ICommand>();
+        public Dictionary<KeyInfo, ICommand> keybinds = new Dictionary<KeyInfo, ICommand>();
 
         public InputHandler()
         {
@@ -36,8 +36,10 @@ namespace DesignPatternsProjekt
             keybinds.Add(new KeyInfo(Keys.Space), new ShootCommand());
 
             // keybinds.Add(new KeyInfo(Keys.W), new MoveCommand(new Vector2((float)Math.Cos(angle + 30),(float)Math.Sin(angle+ 30))));
-            //keybinds.Add(new KeyInfo(Keys.D), new MoveCommand(0.1f));
-            //keybinds.Add(new KeyInfo(Keys.A), new MoveCommand(-0.1f));
+            keybinds.Add(new KeyInfo(Keys.A), new MoveCommand(3.15f));
+            keybinds.Add(new KeyInfo(Keys.W), new MoveCommand(4.7f));
+            keybinds.Add(new KeyInfo(Keys.D), new MoveCommand(0f));
+            keybinds.Add(new KeyInfo(Keys.S), new MoveCommand(1.58f));
         }
 
         public void Execute(Player player)
