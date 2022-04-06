@@ -64,5 +64,20 @@ namespace DesignPatternsProjekt
 
 
         }
+        public GameObject BossCreater()
+        {
+            GameObject item = new GameObject();
+            SpriteRenderer rend = (SpriteRenderer)item.AddComponent(new SpriteRenderer());
+            Collider c = (Collider)item.AddComponent(new Collider());
+            GameWorld.Instance.Colliders.Add(c);
+            item.Tag = "Enemy";
+
+            rend.SetSprite("EvilGirth");
+            rend.Scale = 2f;
+
+            item.AddComponent(new Boss(10f, 1000, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 4));
+
+            return item;
+        }
     }
 }
