@@ -47,10 +47,13 @@ namespace DesignPatternsProjekt
 
             for (int i = 0; i < 10; i++)
             {
-                gameObjects.Add(EnemyFactory.Instance.CreateObject());
+                gameObjects.Add(EnemyFactory.Instance.CreateObject());//Husk det er newGameObjects
             }
-            gameObjects.Add(EnemyFactory.Instance.BossCreater());
-            
+            gameObjects.Add(EnemyFactory.Instance.BossCreater());// new game objects pls
+
+            //for at lave en astroide skal man construct sådan her
+            Director aDirector = new Director(new AsteroidBuilder());
+            newGameObjects.Add(aDirector.Construct());
 
             Director director = new Director(new PlayerBuilder());
             gameObjects.Add(director.Construct());
