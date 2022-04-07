@@ -33,6 +33,16 @@ namespace DesignPatternsProjekt
                   spriteRenderer.Sprite.Height / 2
                   );
                 }
+                else if(GameObject.Tag == "Asteroid")
+                {
+                    return new Rectangle(
+                     (int)(GameObject.Transform.Position.X - 90),
+                     (int)(GameObject.Transform.Position.Y - 70),
+                     spriteRenderer.Sprite.Width /4,
+                     spriteRenderer.Sprite.Height /4 
+                     );
+
+                }
                 else
                 {
                     return new Rectangle(

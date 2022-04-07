@@ -8,7 +8,7 @@ namespace DesignPatternsProjekt
     public class Asteroid : Component
     {
         private float speed;
-        private float rotation;
+        private Animator animator;
         private Vector2 velocity = new Vector2(0, 1);
         private Vector2 spawnPoint = new Vector2(0, 0);
         
@@ -21,6 +21,10 @@ namespace DesignPatternsProjekt
         public override void Start()
         {
             GameObject.Transform.Position = spawnPoint;
+
+            animator = (Animator)GameObject.GetComponent<Animator>();
+
+
         }
         public void Move()
         {
@@ -29,6 +33,7 @@ namespace DesignPatternsProjekt
         public override void Update(GameTime gameTime)
         {
             Move();
+            animator.PlayAnimation("Normal");
         }
     }
 }
