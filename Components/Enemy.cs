@@ -80,9 +80,11 @@ namespace DesignPatternsProjekt
         {
             GameObject other = (collisionEvent as CollisionEvent).Other;
             SpriteRenderer sr = other.GetComponent<SpriteRenderer>() as SpriteRenderer;
-            if (other.Tag == "Player")
+            SpriteRenderer eSr = GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
+            if (sr.Color == eSr.Color && other.Tag != "EnemyLaser")
             {
-              //  sr.Color = Color.Black;
+                //only take damage if color matches and it's not their own laser
+                GameWorld.Instance.Destroy(this.GameObject);
             }
         }
     }

@@ -28,10 +28,11 @@ namespace DesignPatternsProjekt
             gameObject = new GameObject();
             SpriteRenderer rend = (SpriteRenderer)gameObject.AddComponent(new SpriteRenderer());
 
-            Collider c = (Collider)gameObject.AddComponent(new Collider());
-            
+
+
+
             //gameObject.Tag = "Enemy";
-            GameWorld.Instance.Colliders.Add(c);
+            //  GameWorld.Instance.Colliders.Add(c);
 
             // item.AddComponent(new Enemy(2, new Vector2(0, 0)));
 
@@ -80,10 +81,11 @@ namespace DesignPatternsProjekt
                     gameObject.Tag = "EnemyGreen";
                     break;
             }
-           
-          Enemy e = (Enemy)gameObject.AddComponent(new Enemy(40, moveDir, spawnPoint));
 
+            Enemy e = (Enemy)gameObject.AddComponent(new Enemy(40, moveDir, spawnPoint));
+            Collider c = (Collider)gameObject.AddComponent(new Collider());
             c.CollisionEvent.Attach(e);
+
             return gameObject;
 
 
@@ -98,7 +100,7 @@ namespace DesignPatternsProjekt
 
             rend.SetSprite("MinerTest");
             rend.Scale = 2f;
-            
+
 
             item.AddComponent(new Boss(50f, 1000, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 4));
 
