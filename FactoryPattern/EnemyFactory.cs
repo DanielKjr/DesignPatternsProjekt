@@ -36,7 +36,7 @@ namespace DesignPatternsProjekt
             // item.AddComponent(new Enemy(2, new Vector2(0, 0)));
 
 
-            rend.SetSprite("EvilGirth");
+            rend.SetSprite("enemyBlack1");
             Vector2 moveDir = new Vector2(0, 0);
             Vector2 spawnPoint = new Vector2(0, 0);
             switch (rnd.Next(0, 4))
@@ -47,14 +47,17 @@ namespace DesignPatternsProjekt
                     break;
                 case 1:
                     moveDir = new Vector2(0, -1);
+                    rend.Rotation = 3.1f;
                     spawnPoint = new Vector2(rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferWidth), GameWorld.Instance.Graphics.PreferredBackBufferHeight);
                     break;
                 case 2:
                     moveDir = new Vector2(-1, 0);
+                    rend.Rotation = 1.5f;
                     spawnPoint = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth, rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferHeight));
                     break;
                 case 3:
                     moveDir = new Vector2(1, 0);
+                    rend.Rotation = 4.7f;
                     spawnPoint = new Vector2(0, rnd.Next(0, GameWorld.Instance.Graphics.PreferredBackBufferHeight));
                     break;
             }
