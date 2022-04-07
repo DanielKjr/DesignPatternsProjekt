@@ -7,7 +7,6 @@ namespace DesignPatternsProjekt
 {
     public class Spawner
     {
-        private GameObject gameObject;
         private static Spawner instance;
         public static Spawner Instance
         {
@@ -22,18 +21,42 @@ namespace DesignPatternsProjekt
         }
         float dt;
         float colorChangeTimer = 0;
-        float colorChangeTimerMax = 3;
+        float colorChangeTimerMax = 6;
+        float enemyTimer = 0;
+        float enemyTimerMax = 2;
+        float bossTimer = 0;
+        float bossTimerMax = 20;
+
         Random rnd = new Random();
         private Color[] colors = new Color[] {Color.Red, Color.Blue, Color.Green};
 
         public void Update(GameTime gameTime)
         {
             dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            SpawnTimers();
+
+
+        }
+        public void SpawnTimers()
+        {
             colorChangeTimer += dt;
+            enemyTimer += dt;
+            bossTimer += dt;
             if (colorChangeTimer >= colorChangeTimerMax)
             {
                 SpawnColorChange();
                 colorChangeTimer = 0;
+            }
+            if (enemyTimer >= enemyTimerMax)
+            {
+                SpawnEnemy();
+                enemyTimer = 0;
+            }
+            if (bossTimer >= bossTimerMax)
+            {
+                SpawnBoss();
+                bossTimerMax = 300;
+                enemyTimerMax = 300;
             }
 
         }
@@ -57,6 +80,25 @@ namespace DesignPatternsProjekt
 
             
 
+        }
+
+        public void SpawnEnemy()
+        {
+            GameObject go = EnemyFactory.Instance.CreateObject();
+            SpriteRenderer sr = go.GetComponent<SpriteRenderer>() as SpriteRenderer;
+            sr.Color = colors[rnd.Next(colors.Length)];
+            GameWorld.Instance.Instantiate(go);
+            //GameWorld.Instance.gameObjects.Add(EnemyFactory.Instance.CreateObject());
+        }
+
+        public void SpawnBoss()
+        {
+
+            GameObject go = EnemyFactory.Instance.BossCreater();
+            SpriteRenderer sr = go.GetComponent<SpriteRenderer>() as SpriteRenderer;
+            sr.Color = Color.White;
+            GameWorld.Instance.Instantiate(go);
+            //GameWorld.Instance.gameObjects.Add(EnemyFactory.Instance.BossCreater());
         }
     }
 
