@@ -96,7 +96,7 @@ namespace DesignPatternsProjekt
             GameWorld.Instance.Colliders.Add(c);
             item.Tag = "Enemy";
 
-            rend.SetSprite("EvilGirth");
+            rend.SetSprite("MinerTest");
             rend.Scale = 2f;
             
 
