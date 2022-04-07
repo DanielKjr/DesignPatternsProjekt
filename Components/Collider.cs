@@ -93,21 +93,8 @@ namespace DesignPatternsProjekt
             {
                 if (other != this && other.CollisionBox.Intersects(CollisionBox))
                 {
-
-                    
-                    if (other.GameObject.Tag == "Enemy" && this.GameObject.Tag != "EnemyLaser" && this.GameObject.Tag != "Enemy" || other.GameObject.Tag == "ColorChange")
-                    {
-                        CollisionEvent.OnCollision(other.GameObject);
-
-                        // GameWorld.Instance.Destroy(other.GameObject);
-
-
-
-                    }
-
+                    CollisionEvent.OnCollision(other.GameObject);
                 }
-
-
             }
         }
     }

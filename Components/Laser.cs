@@ -3,7 +3,7 @@
 namespace DesignPatternsProjekt
 {
  
-    public class Laser : Component
+    public class Laser : Component, IListner
     {
         private float speed;
         private Vector2 velocity;
@@ -45,6 +45,15 @@ namespace DesignPatternsProjekt
             {
                 GameWorld.Instance.Destroy(this.GameObject);
             }
+
+
+        }
+
+        public void Notify(CollisionEvent collisionEvent)
+        {
+            GameObject other = (collisionEvent as CollisionEvent).Other;
+            SpriteRenderer otherSr = (SpriteRenderer)other.GetComponent<SpriteRenderer>() as SpriteRenderer;
+            SpriteRenderer sr = (SpriteRenderer)GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
 
 
         }

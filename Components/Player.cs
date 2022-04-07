@@ -3,11 +3,12 @@
 namespace DesignPatternsProjekt
 {
     public class Player : Component, IListner
-    { 
+    {
         private float speed;
         private bool canShoot = true;
         private Vector2 velocity;
         private Animator animator;
+        private int health = 5;
 
 
 
@@ -36,6 +37,7 @@ namespace DesignPatternsProjekt
             sr.SetSprite("PlayerAnimation/Ship1");
             sr.Scale = 0.3f;
             sr.Rotation = 4.7f;
+            sr.Color = Color.Red;
             GameObject.Transform.Position = new Vector2(GameWorld.Instance.Graphics.PreferredBackBufferWidth / 2, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 2);
             animator = (Animator)GameObject.GetComponent<Animator>();
         }
@@ -57,20 +59,27 @@ namespace DesignPatternsProjekt
             }
             animator.PlayAnimation("Normal");
 
+            if (health <= 0)
+            {
+
+                GameWorld.Instance.Reset();
+            }
+
         }
-        private Vector2 temptVelocity = new Vector2(0,-1);
+        private Vector2 temptVelocity = new Vector2(0, -1);
         public void Shoot()
         {
             if (canShoot)
             {
                 GameObject go = LaserFactory.Instance.CreateObject();
                 go.Transform.Position = GameObject.Transform.Position;
-
+                go.Tag = "PlayerLaser";
+                SpriteRenderer pSr = GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
                 SpriteRenderer sr = go.GetComponent<SpriteRenderer>() as SpriteRenderer;
 
                 Laser l = go.GetComponent<Laser>() as Laser;
 
-                
+
                 //if (velocity == Vector2.Zero)
                 //{
                 //    l.Velocity = new Vector2(0, -1);
@@ -86,13 +95,13 @@ namespace DesignPatternsProjekt
                 {
                     l.Velocity = temptVelocity;
                 }
-               
+
 
                 if (l.Velocity.Y != -1 && l.Velocity.Y != 1)
                 {
                     sr.Rotation = 1.58f;
                 }
-
+                sr.Color = pSr.Color;
                 GameWorld.Instance.Instantiate(go);
             }
             canShoot = false;
@@ -109,9 +118,11 @@ namespace DesignPatternsProjekt
 
                 GameWorld.Instance.Destroy(other);
             }
-            if (other.Tag == "Enemy")
+            if (other.Tag != "PlayerLaser" && other.Tag != "ColorChange")
             {
-              //  GameWorld.Instance.Destroy(other);
+                GameWorld.Instance.Destroy(other);
+                health--;
+                //take damage
             }
         }
     }

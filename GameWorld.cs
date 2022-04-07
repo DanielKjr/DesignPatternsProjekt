@@ -75,7 +75,7 @@ namespace DesignPatternsProjekt
 
 
         }
-
+ 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -126,6 +126,7 @@ namespace DesignPatternsProjekt
         public void Destroy(GameObject go)
         {
             destroyedGameObjects.Add(go);
+            
         }
 
         /// <summary>
@@ -154,7 +155,6 @@ namespace DesignPatternsProjekt
             {
                 Collider c = (Collider)((GameObject)destroyedGameObjects[i]).GetComponent<Collider>();
                 gameObjects.Remove(destroyedGameObjects[i]);
-
                 if (c != null)
                 {
                     Colliders.Remove(c);
@@ -195,5 +195,28 @@ namespace DesignPatternsProjekt
                 gameObjects.Add(StarFactory.Instance.CreateObject());
             }
         }
+
+        public void Reset()
+        {
+            for (int i = 0; i < gameObjects.Count; i++)
+            {
+                destroyedGameObjects.Add(gameObjects[i]);
+            }
+            for (int i = 0; i < destroyedGameObjects.Count; i++)
+            {
+                Collider c = (Collider)((GameObject)destroyedGameObjects[i]).GetComponent<Collider>();
+                gameObjects.Remove(destroyedGameObjects[i]);
+                if (c != null)
+                {
+                    Colliders.Remove(c);
+                }
+            }
+
+            destroyedGameObjects.Clear();
+
+            Initialize();
+            LoadContent();
+        }
+
     }
 }
