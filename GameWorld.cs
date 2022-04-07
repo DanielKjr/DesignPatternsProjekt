@@ -45,8 +45,11 @@ namespace DesignPatternsProjekt
             Graphics.ApplyChanges();
             CreateBackground();
 
-            
-            
+
+            //for at lave en astroide skal man construct sådan her
+            Director aDirector = new Director(new AsteroidBuilder());
+            newGameObjects.Add(aDirector.Construct());
+
 
             Director director = new Director(new PlayerBuilder());
             gameObjects.Add(director.Construct());
