@@ -66,7 +66,9 @@ namespace DesignPatternsProjekt
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+#if DEBUG
             DrawRectangle(CollisionBox, spriteBatch);
+#endif
         }
 
         public override void Update(GameTime gameTime)

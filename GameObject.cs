@@ -66,21 +66,7 @@ namespace DesignPatternsProjekt
             }
         }
 
-        /// <summary>
-        /// Adds a clone of a component and returns GameObject
-        /// </summary>
-        /// <returns></returns>
-        public Object Clone()
-        {
-            GameObject go = new GameObject();
 
-            foreach (Component c in components)
-            {
-                go.AddComponent(c.Clone() as Component);
-            }
-
-            return go;
-        }
     }
 
 }

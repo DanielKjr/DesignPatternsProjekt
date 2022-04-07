@@ -6,7 +6,6 @@ namespace DesignPatternsProjekt
 {
     public abstract class Component
     {
-        public bool IsEnabled { get; set; }
         public GameObject GameObject { get; set; }
 
         public virtual void Awake()
@@ -29,9 +28,6 @@ namespace DesignPatternsProjekt
 
         }
 
-        public virtual Object Clone()
-        {
-            return this.MemberwiseClone();
-        }
+
     }
 }
