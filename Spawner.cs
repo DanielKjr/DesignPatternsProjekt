@@ -86,7 +86,7 @@ namespace DesignPatternsProjekt
         {
             GameObject go = EnemyFactory.Instance.CreateObject();
             SpriteRenderer sr = go.GetComponent<SpriteRenderer>() as SpriteRenderer;
-            sr.Color = colors[rnd.Next(colors.Length)];
+            //sr.Color = colors[rnd.Next(colors.Length)];
             GameWorld.Instance.Instantiate(go);
             //GameWorld.Instance.gameObjects.Add(EnemyFactory.Instance.CreateObject());
         }
