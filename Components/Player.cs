@@ -79,13 +79,6 @@ namespace DesignPatternsProjekt
 
                 Laser l = go.GetComponent<Laser>() as Laser;
 
-
-                //if (velocity == Vector2.Zero)
-                //{
-                //    l.Velocity = new Vector2(0, -1);
-
-                //}
-
                 if (velocity != Vector2.Zero)
                 {
                     l.Velocity = velocity;

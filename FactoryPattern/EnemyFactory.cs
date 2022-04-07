@@ -28,17 +28,6 @@ namespace DesignPatternsProjekt
             gameObject = new GameObject();
             SpriteRenderer rend = (SpriteRenderer)gameObject.AddComponent(new SpriteRenderer());
 
-
-
-
-            //gameObject.Tag = "Enemy";
-            //  GameWorld.Instance.Colliders.Add(c);
-
-            // item.AddComponent(new Enemy(2, new Vector2(0, 0)));
-
-
-
-
             rend.SetSprite("enemyBlack1");
 
             Vector2 moveDir = new Vector2(0, 0);
