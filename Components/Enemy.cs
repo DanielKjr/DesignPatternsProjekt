@@ -85,6 +85,15 @@ namespace DesignPatternsProjekt
             {
                 //only take damage if color matches and it's not their own laser
                 GameWorld.Instance.Destroy(this.GameObject);
+                
+            }
+            if (other.Tag == "PlayerLaser")
+            {
+                GameWorld.Instance.Destroy(other);
+            }
+            if (other.Tag == "Asteroid")
+            {
+                GameWorld.Instance.Destroy(this.GameObject);
             }
         }
     }

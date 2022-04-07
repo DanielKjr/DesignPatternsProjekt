@@ -92,19 +92,18 @@ namespace DesignPatternsProjekt
         }
         public GameObject BossCreater()
         {
-            GameObject item = new GameObject();
-            SpriteRenderer rend = (SpriteRenderer)item.AddComponent(new SpriteRenderer());
-            Collider c = (Collider)item.AddComponent(new Collider());
-            GameWorld.Instance.Colliders.Add(c);
-            item.Tag = "Enemy";
+            gameObject = new GameObject();
+            gameObject.Tag = "Enemy";
 
+            SpriteRenderer rend = (SpriteRenderer)gameObject.AddComponent(new SpriteRenderer());
             rend.SetSprite("MinerTest");
             rend.Scale = 2f;
 
+            Boss b = (Boss)gameObject.AddComponent(new Boss(50f, 10, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 4));
+            Collider c = (Collider)gameObject.AddComponent(new Collider());
+            c.CollisionEvent.Attach(b);
 
-            item.AddComponent(new Boss(50f, 1000, GameWorld.Instance.Graphics.PreferredBackBufferHeight / 4));
-
-            return item;
+            return gameObject;
         }
     }
 }

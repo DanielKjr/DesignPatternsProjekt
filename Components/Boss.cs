@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DesignPatternsProjekt
 {
-    class Boss : Component
+    class Boss : Component, IListner
     {
         private float speed;
         private Vector2 velocity = new Vector2(0, 1);
@@ -81,7 +81,10 @@ namespace DesignPatternsProjekt
             Move();
             Shoot();
             ChangeColor();
-            
+            if (Health <= 0)
+            {
+                GameWorld.Instance.Destroy(this.GameObject);
+            }
         }
         private int AngleToPlayer()
         {
@@ -134,6 +137,16 @@ namespace DesignPatternsProjekt
                 bossColorTimer = 0;
             }
             
+        }
+
+        public void Notify(CollisionEvent collisionEvent)
+        {
+            GameObject other = (collisionEvent as CollisionEvent).Other;
+            if (other.Tag == "PlayerLaser")
+            {
+                Health--;
+                GameWorld.Instance.Destroy(other);
+            }
         }
     }
 }

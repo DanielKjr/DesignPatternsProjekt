@@ -8,6 +8,7 @@ namespace DesignPatternsProjekt
     {
         private Random rnd = new Random();
         private GameObject gameObject;
+        
         public void BuildGameObject()
         {
             gameObject = new GameObject();
@@ -75,6 +76,8 @@ namespace DesignPatternsProjekt
         {
             return gameObject;
         }
+
+
     }
 
 }

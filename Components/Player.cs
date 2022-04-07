@@ -8,7 +8,7 @@ namespace DesignPatternsProjekt
         private bool canShoot = true;
         private Vector2 velocity;
         private Animator animator;
-        private int health = 5;
+        private int health = 500;
 
 
 
