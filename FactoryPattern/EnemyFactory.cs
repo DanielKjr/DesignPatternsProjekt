@@ -36,7 +36,7 @@ namespace DesignPatternsProjekt
             // item.AddComponent(new Enemy(2, new Vector2(0, 0)));
 
 
-            rend.SetSprite("EvilGirth");
+            rend.SetSprite("MinerTest");
             Vector2 moveDir = new Vector2(0, 0);
             Vector2 spawnPoint = new Vector2(0, 0);
             switch (rnd.Next(0, 4))

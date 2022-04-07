@@ -45,11 +45,7 @@ namespace DesignPatternsProjekt
             Graphics.ApplyChanges();
             CreateBackground();
 
-            for (int i = 0; i < 10; i++)
-            {
-                gameObjects.Add(EnemyFactory.Instance.CreateObject());
-            }
-            gameObjects.Add(EnemyFactory.Instance.BossCreater());
+            
             
 
             Director director = new Director(new PlayerBuilder());
