@@ -96,7 +96,7 @@ namespace DesignPatternsProjekt
 
             GameObject go = EnemyFactory.Instance.BossCreater();
             SpriteRenderer sr = go.GetComponent<SpriteRenderer>() as SpriteRenderer;
-            sr.Color = Color.White;
+
             GameWorld.Instance.Instantiate(go);
             //GameWorld.Instance.gameObjects.Add(EnemyFactory.Instance.BossCreater());
         }

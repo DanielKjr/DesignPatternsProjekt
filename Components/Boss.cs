@@ -16,6 +16,9 @@ namespace DesignPatternsProjekt
         private int megaAttackTimer = 120;
         private int megaAttackStep = 0;
         private Random rnd = new Random();
+        private Color[] colors = new Color[] { Color.Red, Color.Blue, Color.Green, Color.Magenta, Color.Brown, Color.Yellow, Color.Teal};
+        private float bossColorTimer = 0;
+        private float bossColorTimerMax = 1;
         public int Health { get; set; }
         public Boss(float _speed, int _health, int _desiredYPos)
         {
@@ -77,6 +80,8 @@ namespace DesignPatternsProjekt
         {
             Move();
             Shoot();
+            ChangeColor();
+            
         }
         private int AngleToPlayer()
         {
@@ -117,6 +122,18 @@ namespace DesignPatternsProjekt
             GameWorld.Instance.Instantiate(item);
             SpriteRenderer sr = item.GetComponent<SpriteRenderer>() as SpriteRenderer;
             sr.Rotation = (float)((Math.PI / 180) * (angle + 180));
+        }
+
+        private void ChangeColor()
+        {
+            bossColorTimer += GameWorld.DeltaTime;
+            if (bossColorTimer >= bossColorTimerMax)
+            {
+                SpriteRenderer eSr = this.GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
+                eSr.Color = colors[rnd.Next(colors.Length)];
+                bossColorTimer = 0;
+            }
+            
         }
     }
 }
