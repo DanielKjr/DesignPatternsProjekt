@@ -46,7 +46,8 @@ namespace DesignPatternsProjekt
                 {
                     sr.Rotation = 1.58f;
                 }
-                 
+                SpriteRenderer eSr = this.GameObject.GetComponent<SpriteRenderer>() as SpriteRenderer;
+                sr.Color = eSr.Color;
 
 
 
@@ -61,10 +62,17 @@ namespace DesignPatternsProjekt
             Shoot();
             shootTime += GameWorld.DeltaTime;
 
-            if (shootTime > 1)
+            if (shootTime > 2)
             {
                 canShoot = true;
                 shootTime = 0;
+            }
+            if (GameObject.Transform.Position.Y < -42 ||
+                GameObject.Transform.Position.Y >= GameWorld.Instance.Graphics.PreferredBackBufferHeight + 42 ||
+                GameObject.Transform.Position.X < -48 ||
+                GameObject.Transform.Position.X >= GameWorld.Instance.Graphics.PreferredBackBufferWidth + 48)
+            {
+                GameObject.Transform.Position = spawnPoint;
             }
         }
 

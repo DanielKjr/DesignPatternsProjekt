@@ -30,7 +30,7 @@ namespace DesignPatternsProjekt
 
             Collider c = (Collider)gameObject.AddComponent(new Collider());
             
-            gameObject.Tag = "Enemy";
+            //gameObject.Tag = "Enemy";
             GameWorld.Instance.Colliders.Add(c);
 
             // item.AddComponent(new Enemy(2, new Vector2(0, 0)));
@@ -65,8 +65,23 @@ namespace DesignPatternsProjekt
                     break;
             }
 
+            switch (rnd.Next(0, 3))
+            {
+                case 0:
+                    rend.Color = Color.Red;
+                    gameObject.Tag = "EnemyRed";
+                    break;
+                case 1:
+                    rend.Color = Color.Blue;
+                    gameObject.Tag = "EnemyBlue";
+                    break;
+                case 2:
+                    rend.Color = Color.Green;
+                    gameObject.Tag = "EnemyGreen";
+                    break;
+            }
            
-          Enemy e = (Enemy)gameObject.AddComponent(new Enemy(20, moveDir, spawnPoint));
+          Enemy e = (Enemy)gameObject.AddComponent(new Enemy(40, moveDir, spawnPoint));
 
             c.CollisionEvent.Attach(e);
             return gameObject;
